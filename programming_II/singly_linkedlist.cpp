@@ -30,7 +30,7 @@ llist create_list(int element_number)
     for (int i = 1; i <= element_number; i++)
     {
         elem_t *e = new elem_t;
-        cout << "Value of" << i << " element: ";
+        cout << "Value of " << i << " element: ";
         cin >> e->data;
         temp = insert_elem(temp, e);
     }
@@ -70,6 +70,12 @@ llist delete_elem(llist l, int key)
     return l;
 }
 
+void delete_list(llist &l)
+{
+    while (l != NULL)
+        l = delete_elem(l,head(l));
+}
+
 int main()
 {
     llist ls;
@@ -85,6 +91,10 @@ int main()
     cout << "Value to remove: ";
     cin >> n;
     ls = delete_elem(ls, n);
+
+    print_list(ls);
+
+    delete_list(ls);
 
     print_list(ls);
 
